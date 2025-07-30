@@ -8,11 +8,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="blob-wrapper">
-    <div class="background-accent top-blob"></div>
+	<div id="splash-screen">
+		  <video id="splash-video" autoplay muted playsinline>
+			<source src="animation.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		  </video>
+	</div>
+	<div id = "blob-wrapper" class="blob-wrapper">
+	<div class="background-accent top-blob"></div>
     <div class="background-accent bottom-blob"></div>
-  </div>
-
+	</div>
+	
+	<div id = "actualcontent" class = "actualcontent">
   <div class="page-wrapper">
     <div class="main-container">
 		<div class="inner-blob inner-blob-1"></div>
@@ -22,6 +29,7 @@
 	  <nav class="nav-centered">
 		<ul class="nav-links">
 		  <li><a href="index.html">Home</a></li>
+		  <li><a href="about.html">About</a></li>
 		  <li><a href="Class Portfolio.html">Class Portfolio</a></li>
 		</ul>
 	  </nav>
@@ -31,8 +39,9 @@
         <div class="hero-text">
           <h1>We are <span class="highlight">TC01</span></h1>
           <h2>We are students from <strong>FEU Tech</strong></h2>
-          <p>Welcome to our website where we showcase each of our websites as a project in IT0043.</p>
-          <a href="Class Portfolio.html" class="btn-download">View Websites</a>
+          <p>Welcome to our website where we showcase each of our websites as a project in IT0043 - Web Design with Client-Side Scripting 
+		  submitted to our professor Dr. Joferson Bombasi. </p>
+          <a href="Class Portfolio.html" class="btn-view">View Websites</a>
         </div>
       </section>
     </div>
@@ -41,5 +50,22 @@
   <footer class="footer">
     <p>© 2025 FEU Tech IT0043 - TC01. All rights reserved.</p>
   </footer>
+  </div>
+  <script>
+			const splash = document.getElementById("splash-screen");
+			const main = document.getElementById("actualcontent");
+			const video = document.getElementById("splash-video");
+			const blobs = document.getElementById("blob-wrapper");
+
+			video.addEventListener("ended", () => {
+			  splash.classList.add("fade-out");
+
+			  setTimeout(() => {
+				splash.style.display = "none";
+				main.style.display = "flex";
+				blobs.style.display = "block"; 
+			  }, 1000);
+			});
+	</script>
 </body>
 </html>

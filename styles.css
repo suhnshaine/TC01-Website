@@ -12,13 +12,57 @@ html, body {
   flex-direction: column;
 }
 
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#splash-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.actualcontent {
+  display: none;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.fade-out {
+  animation: fadeOut 1s ease forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 .blob-wrapper {
   position: absolute;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: 0;
   pointer-events: none; 
+  contain: layout;
+  display: none;
+}
+
+.blob-wrapper-withov {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; 
+  contain: layout;
 }
 
 .background-accent {
@@ -41,9 +85,30 @@ html, body {
   background-color: #3FC1C9;
 }
 
+.mid-left-blob {
+  bottom: -1000px;
+  left: -100px;
+  background-color: #364F6B;
+  border-radius: 60% 40% 50% 70% / 60% 40% 50% 60%;
+}
+
+.mid-right-blob {
+  bottom: -1850px;
+  right: -100px;
+  background-color: #FC5185; 
+  border-radius: 50% 60% 60% 50% / 50% 40% 60% 40%;
+}
+
+.last-blob {
+  bottom: -2700px;
+  left: -100px;
+  background-color: #3FC1C9; 
+}
+
 .page-wrapper {
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 60px 20px;
@@ -54,7 +119,7 @@ html, body {
 .main-container {
   width: 95vw;
   max-width: 1300px;
-  height: 70vh;
+  min-height: 70vh;
   background: white;
   border-radius: 20px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
@@ -64,12 +129,12 @@ html, body {
   z-index: 2;
   justify-content: space-between;
   position: relative;
+  overflow: hidden;
 }
 
 .portfolio-page .main-container {
   height: auto;
   max-height: none;
-  overflow: visible;
 }
 
 .inner-blob {
@@ -92,6 +157,48 @@ html, body {
   bottom: 0;
   left: 0;
   background-color: #3FC1C9;
+}
+
+.inner-blob-3 {
+  top: 2800px;
+  right: 500px;
+  background-color: #FC5185;
+}
+
+.inner-blob-4 {
+  top: 400px;
+  right: 700px;
+  background-color: #3FC1C9;
+}
+
+.inner-blob-5 {
+  top: 800px;
+  left: 60%;
+  background-color: #FC5185;
+}
+
+.inner-blob-6 {
+  top: 1200px;
+  left: -120px;
+  background-color: #3FC1C9;
+}
+
+.inner-blob-7 {
+  top: 1700px;
+  right: -150px;
+  background-color: #FC5185;
+}
+
+.inner-blob-8 {
+  top: 2200px;
+  left: 10%;
+  background-color: #3FC1C9;
+}
+
+.inner-blob-9 {
+  top: 2700px;
+  right: -100px;
+  background-color: #FC5185;
 }
 
 .navbar {
@@ -130,14 +237,8 @@ html, body {
   font-weight: 500;
 }
 
-
-.btn-hire {
-  background-color: #3FC1C9;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
+.nav-links a:hover {
+  color: #FC5185;
 }
 
 .hero-box {
@@ -167,13 +268,17 @@ html, body {
   margin: 20px 0 40px;
 }
 
-.btn-download {
+.btn-view {
   background-color: #3FC1C9;
   color: white;
   padding: 12px 20px;
   text-decoration: none;
   border-radius: 6px;
   font-weight: 600;
+}
+
+.btn-view:hover{
+  background-color: #FC5185;
 }
 
 .footer {
@@ -184,6 +289,7 @@ html, body {
   color: white;
   z-index: 1;
   position: relative;
+  margin-top: auto;
 }
 
 @media (max-width: 768px) {
@@ -231,6 +337,10 @@ html, body {
   width: 100%;
   max-width: 200px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
 }
 
 .student-card img {
@@ -248,8 +358,7 @@ html, body {
 }
 
 .student-card a {
-  display: inline-block;
-  margin-top: 6px;
+  margin-top: auto;
   background-color: #3FC1C9;
   color: white;
   padding: 8px 14px;
@@ -260,5 +369,11 @@ html, body {
 }
 
 .student-card a:hover {
-  background-color: #36adb4;
+  background-color: #FC5185;
+}
+
+.student-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(63, 193, 201, 0.3);
+  transition: all 0.3s ease;
 }
